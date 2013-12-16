@@ -1,0 +1,166 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{tikz}
+\usepackage{manfnt}
+\usepackage{todonotes}
+\usepackage{textcomp}
+\usetikzlibrary{decorations.markings}
+\usepackage[all]{xy}
+%\usepackage[nottoc,notlot,notlof]{tocbibind}
+\tikzset{->-/.style={decoration={
+  markings,
+  mark=at position .5 with {\arrow{>}}},postaction={decorate}}}
+%opening
+
+
+
+% or if manfnt is unavailable, uncomment the next two lines
+%\font\manual=manfnt
+%\def\dbend{{\manual\char127}} % dangerous bend sign
+
+%%
+% This macro header is what controls the ``dangerous bend''
+% paragraph
+%%
+
+% Danger, Will Robinson!
+\newenvironment{danger}{\medbreak\noindent\hangindent=2pc\hangafter=-2%
+  \clubpenalty=10000%
+  \hbox to0pt{\hskip-\hangindent\dbend\hfill}\small\ignorespaces}%
+  {\medbreak\par}
+
+% Danger! Danger!
+\newenvironment{ddanger}{\medbreak\noindent\hangindent=3pc\hangafter=-2%
+  \clubpenalty=10000%
+  \hbox to0pt{\hskip-\hangindent\dbend\kern2pt\dbend\hfill}\small\ignorespaces}%
+  {\medbreak\par}
+
+%\mathrel{\mathop:}=
+
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\norm}[1] {\| #1 \|}
+\newcommand{\Hom}[3]{\mbox{Hom}_{#1} \left( #2, #3 \right)}
+\newcommand{\inner}[2]{\langle #1, #2 \rangle}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\mbf}[1]{\mathbf{#1}}
+\newcommand{\mbb}[1]{\mathbb{#1}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\mcal}[1]{\mathcal{#1}}
+\newcommand{\ang}[1]{\langle #1 \rangle}
+\newcommand{\dfn}{\mathrel{\mathop:}=}
+\newcommand{\supp}[1]{\mathrm{Supp}(#1)}
+\newcommand{\path}[3]{\mbox{path}_{#1}{(#2,#3)}}
+\newcommand{\wmu}{\widetilde{\mu}}
+\newcommand{\ex}[1]{\exp \left( #1 \right)}
+\newcommand{\LscLz}[2]{\mathrm{Lip}^{\mathrm{ls}}(#1,#2)}
+\newcommand{\mfrak}[1]{\mathfrak{#1}}
+\newcommand{\BredR}[2]{\mathrm{Mod}_{\mfrak{#1}}$-$#2}
+\newcommand{\LBred}[2]{#1$-$\mathrm{Mod}_{\mfrak{#2}}}
+\newcommand{\mor}[2]{\mathrm{mor}(#1,#2)}
+
+
+\theoremstyle{plain}% default
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{dt}[thm]{Definition and Theorem}
+
+%No numbering
+\newtheorem*{thmR}{Theorem}
+\newtheorem*{lemR}{Lemma}
+\newtheorem*{propR}{Proposition}
+\newtheorem*{corR}{Corollary}
+\newtheorem*{dtR}{Definition and Theorem}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{exmp}[thm]{Example}
+\newtheorem{exmps}[thm]{Examples}
+\newtheorem{qu}[thm]{Question}
+\newtheorem{dprop}[thm]{Definition and Proposition}
+
+\newtheorem*{defnR}{Definition}
+\newtheorem*{exmpR}{Example}
+\newtheorem*{exmpsR}{Examples}
+\newtheorem*{quR}{Question}
+\newtheorem*{dpropR}{Definition and Proposition}
+
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+
+%\setlength{\parindent}{0in}
+
+\begin{document}
+\section{Automorphisms of Houghton's Group}
+We aim to find the automorphisms of Houghton's group $H_n$ which acts on the set $X_n$ ($n$ branches of $\N$). Throughout we shall consider $n \ge 2$ as $H_1 \cong FSym$ (the group of all permutations with finite support)
+and $Aut(FSym) \cong Sym$ (the group of all possible permutations). We will also omit $X_n$ when it is clear from the context that it is the set being acted on by $FSym$  or
+$Sym$. Note $FSym(X_n) \subseteq H_n \subseteq Sym(X_n)$.
+\begin{thm} $Aut(H_n)$ has solvable conjugacy problem.
+\end{thm}
+This has not yet been achieved. First we will calculate the structure of $Aut(H_n)$. We will prove the following.
+\begin{lem}\label{1}
+$Aut(H_n) \cong N_{Sym}H_n.$
+\end{lem}
+\begin{lem}\label{2}
+$N_{Sym}H_n = S_n \ltimes H_n$.
+\end{lem}
+An important point to note is that finite extensions do not pass conjugacy solvability across \cite{Gorjaga1975}. This means that despite the fact that $H_n$
+has solvable conjugacy problem \cite{ConjHou} and that $S_n \ltimes H_n$ is a finite extension of $H_n$ we do not automatically
+have that $Aut(H_n)$ has solvable conjugacy problem.
+
+Our first steps are towards Lemma \ref{1}. Using that every automorphism  of FSym is conjugation by $\rho \in Sym$ and Lemma \ref{3} below,
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\begin{align*}   \textrm{Meaning} \;\;  \rho \sigma |_{FSym} \rho^{-1} &=id_{FSym}\;\; \textrm{and so}\;\; \rho \sigma \rho^{-1} = id_{H_n}
+     \end{align*}
+We will then have that every $\sigma \in Aut(H_n)$ can be achieved through conjugation by $\rho \in Sym$ so that there is an epimorphism from $N_{Sym}H_n$ to $Aut(H_n)$.
+\begin{lem}\label{3} Let $\sigma \in Aut(H_n)$. If $\sigma |_{FSym}=id_{FSym}$ then $\sigma=id_{H_n}$
+\end{lem}
+We consider the action of the standard generators $g_i$ after such an automorphism $\sigma$. To simplify the action of $g_i$ we identify it's support (2 branches of $X_n$) with $\Z$.
+\begin{proof} Let $g$ be a standard generator and $\sigma \in Aut(H_n)$ with $\sigma |_{FSym}=id_{FSym}$.
+\begin{align*}(\sigma g)^{-1} (i\; i+1)(\sigma g) &= \sigma(g(i\; i+1))=\sigma(i-1\; i)=(i-1\; i)\\
+(\sigma g)^{-1} (i\; i+1)(\sigma g) &=(\sigma g(i) \; \sigma g(i+1))
+\end{align*}
+Therefore $\sigma g(i) \in \{ i-1,\; i\}$. Running the argument for the transposition $(i-1 \; i)$ shows $\sigma g(i) \in \{i-2, i-1\}$ and so $\sigma g(i) = i-1$.
+
+As this argument holds for all $i \in \Z$ (the two branches our given generator acts on) we have that on the branches $g$ acts on, $\sigma g(i)$ acts in the same way.
+
+By checking that $supp(\sigma (g))=supp(g)$ we will have proved our claim for the generators of $H_n$ and so the claim will extend to any element of $H_n$.
+This can be done by noticing that for the argument above if we consider those points fixed by $g$ (i.e. not on the copy of $\Z$ that $g$ translates) then $\sigma g$ fixes all
+such finite permutations. To show that $\sigma g$ does not translate any other branch we note that for all $h \in H_n$ such that $|h|<\infty$ and $supp(h) \cap supp(g) = \emptyset$ we have that $h^g = h$ and the following holds.
+\begin{align*}
+&h^g = h \Rightarrow \sigma(h^g)=\sigma(h) \Rightarrow \sigma(g^{-1})\sigma(h)\sigma(g)=\sigma(h) \Rightarrow \sigma g \in C_{H_n} (\sigma h)
+\end{align*}
+As $\sigma$ is an automorphism $\sigma h$ cannot be of infinite order and so $\sigma g$ cannot act on any other branch.
+\end{proof}
+This means we have a epimorphism $m: N_{Sym}H_n \xrightarrow\!\!\!\!\to Aut(H_n)$. For the following argument we will need that $C_{Sym}(H_n)$ is trivial. It is enough to show that $C_{Sym}(FSym)$ is trivial.
+Assume there is a $\rho \ne 1$ in Sym such that $\forall \; g \in FSym, \rho g=g\rho$. Then there is some $i \in supp(\rho)$. So pick $j \not\in \{\rho(i), i\}$. Now $(i, j)^{\rho}=(\rho(i), \rho(j))=(i, j)$ gives us our contradiction
+as $\rho(i)\ne i$ or $j$.
+\begin{lem} m is injective.
+\end{lem}
+\begin{proof}
+Consider $\rho_1, \rho_2 \in Sym$ such that $\forall g \in H_n\; \rho_1g\rho_1^{-1}=\rho_2^{-1}g\rho_2$. Clearly $\rho_2\rho_1g =g\rho_1\rho_2$. Therefore $\rho_1=\rho_2^{-1}$ as $C_{Sym}(H_n)$ is trivial.
+This means given 2 conjugates in Sym which define the same automorphism of $H_n$ the conjugates must be equal.
+\end{proof}
+Now we move onto Lemma \ref{2}. We note that $S_n$ acts on $X_n$ by permuting its branches. From this $H_n \unlhd S_nH_n$ and clearly such an action has trivial intersection with $H_n$ meaning $N_{Sym}H_n \supseteq
+S_n \ltimes H_n$.
+
+\bibliographystyle{amsalpha}
+\bibliography{bibliography}
+\end{document}
